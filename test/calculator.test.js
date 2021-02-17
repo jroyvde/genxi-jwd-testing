@@ -54,5 +54,67 @@ describe('Calculator', () => {
       });
     });
   });
+
+  describe("#multiply", () => {
+    describe("when passed a string as a number", () => {
+      it("should throw an error", () => {
+        const calculator = new Calculator();
+
+        expect(() => calculator.multiply("4", 5)).to.throw();
+        expect(() => calculator.multiply(4, "5")).to.throw();
+      });
+    });
+
+    describe("when passed two numbers", () => {
+      it("should not throw an error", () => {
+        const calculator = new Calculator();
+
+        expect(() => calculator.multiply(4, 5)).not.to.throw();
+      });
+
+      it("should multiply the numbers", () => {
+        const calculator = new Calculator();
+
+        const result = calculator.multiply(4, 5);
+
+        expect(result).to.equal(20);
+      });
+    });
+  });
+
+  describe("#divide", () => {
+    describe("when passed a string as a number", () => {
+      it("should throw an error", () => {
+        const calculator = new Calculator();
+
+        expect(() => calculator.divide("36", 9)).to.throw();
+        expect(() => calculator.divide(36, "9")).to.throw();
+      });
+    });
+
+    describe("when passed two numbers", () => {
+      it("should not throw an error", () => {
+        const calculator = new Calculator();
+
+        expect(() => calculator.divide(36, 9)).not.to.throw();
+      });
+
+      it("should divide the first number by the second", () => {
+        const calculator = new Calculator();
+
+        const result = calculator.divide(36, 9);
+
+        expect(result).to.equal(4);
+      });
+    });
+
+    describe("when attempting to divide by zero", () => {
+      it("should throw an error", () => {
+        const calculator = new Calculator();
+
+        expect(() => calculator.divide(36, 0)).to.throw();
+      });
+    });
+  });
   
 });
